@@ -1,8 +1,11 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { NativeScriptModule } from "@nativescript/angular";
+import { NativeScriptFormsModule } from "@nativescript/angular"
+import { NativeScriptRouterModule } from "@nativescript/angular";
 
 import { AppComponent } from "./app.component";
-import { SampleComponent } from './sample.component';
+import { LayoutComponent } from './layout.component';
+import { routes, navigatableComponents } from './app.routing';
 
 @NgModule({
 	bootstrap: [
@@ -10,13 +13,17 @@ import { SampleComponent } from './sample.component';
 	],
 	imports: [
 		NativeScriptModule,
+		NativeScriptFormsModule,
+		NativeScriptRouterModule,
+		NativeScriptRouterModule.forRoot(routes),
 	],
 	declarations: [
 		AppComponent,
-		SampleComponent,
+		LayoutComponent,
+		...navigatableComponents
 	],
 	exports: [
-		SampleComponent,
+		LayoutComponent,
 	],
 	providers: [],
 	schemas: [
